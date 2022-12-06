@@ -34,7 +34,7 @@ CREATE TABLE if not exists images (id int(11) NOT NULL AUTO_INCREMENT, path VARC
 
 INSERT INTO images( path, item_id, type) VALUE
 ("grande_roue.jpg", 1, 2),
-("grande_roue1.jpg", 1, 1),
+("grande_roue1.png", 1, 1),
 ("basilique_exterieur.jpg",  2, 1),
 ("basilique_interieur.jpg",   2, 1),
 ("tour_montreal_exterieur.jpg",  3, 1),
