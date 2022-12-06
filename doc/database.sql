@@ -10,30 +10,44 @@ INSERT INTO site( name, adress, description) VALUES
 ("Mont Royal", "Chem. Olmsted, Montréal, QC H3H 1A2" , "description");
 ("Parc olympique de Montréal", " 4545 Av. Pierre-De Coubertin, Montréal, QC H1V 3N7" , "description");
 ("Oratoire Saint-Joseph du Mont-Royal", "3800 Chem. Queen Mary, Montréal, QC H3V 1H6" , "description");
+
 CREATE TABLE if not exists activity (id int(11) NOT NULL AUTO_INCREMENT, wording VARCHAR(50),  site_id INT(11),    price DECIMAL(4,1) , primary key(ID));
 ALTER TABLE activity 
 ADD CONSTRAINT FK_ACTIVITY_SITE FOREIGN KEY(site_id) REFERENCES site(id);
 INSERT INTO activity( wording, site_id, price) VALUES 
-("Monter à la roue", 1, 30.0 );
-("Visite guidée dans le vieux port", 1, 25.0);
-("visite guidée", 2, 35.0);
-("Visite nocturne guidée en petit groupe", 2, 40.0);
-("visite guidée", 3, 15.0);
-("Expérience Thermale Spa Nordique", 4, 25.0);
-("Massage relaxant", 4, 40.0);
-("Visite guidée en bus", 5, 35.0);
-("Visite guidée en vélo", 5, 25.0);
-("Visite à l'interieur du Stade Olympique ", 6, 15.0);
-("Visite au Biodôme", 6, 25.0);
-("Visite guidée en bus", 7, 30.0);
+("Monter à la roue", 1, 30.0 ),
+("Visite guidée dans le vieux port", 1, 25.0),
+("visite guidée", 2, 35.0),
+("Visite nocturne guidée en petit groupe", 2, 40.0),
+("visite guidée", 3, 15.0),
+("Expérience Thermale Spa Nordique", 4, 25.0),
+("Massage relaxant", 4, 40.0),
+("Visite guidée en bus", 5, 35.0),
+("Visite guidée en vélo", 5, 25.0),
+("Visite à l'interieur du Stade Olympique ", 6, 15.0),
+("Visite au Biodôme", 6, 25.0),
+("Visite guidée en bus", 7, 30.0),
 ("Visite nocturne guidée en petit groupe", 7, 35.0);
 
 CREATE TABLE if not exists images (id int(11) NOT NULL AUTO_INCREMENT, path VARCHAR(50),  item_id INT(11),type INT(1) , primary key(ID));
 ;
 
 INSERT INTO images( path, item_id, type) VALUE
-("neige.jpg", 1, 2),
-("sky.jpg", 2, 1);
+("grande_roue.jpg", 1, 2),
+("grande_roue1.jpg", 1, 1),
+("basilique_exterieur.jpg",  2, 1),
+("basilique_interieur.jpg",   2, 1),
+("tour_montreal_exterieur.jpg",  3, 1),
+("tour_montreal_interieur.jpg" 3, 1),
+("strom_spa_exterieur.jpg", 4, 1),
+("strom_spa_interieur.jpg",4, 1),
+("mont_royal_vue.jpg", 5, 1),
+("mont_royal_vue_2.jpg",5, 1),
+("parc_olympique_exterieur.jpg", 6, 1),
+("parc_olympique_interieur.jpg",6, 1),
+("oratoire_exterieur.jpg", 7, 1),
+("oratoire_interieur.jpg", 7, 1),
+
 
 
 
