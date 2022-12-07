@@ -3,6 +3,9 @@ CREATE DATABASE if not exists  visites;
 USE visites;
 CREATE TABLE if not exists site (id int(11) NOT NULL AUTO_INCREMENT, name VARCHAR(50), adress VARCHAR(50), description LONGTEXT,  primary key(ID));
 INSERT INTO site( name, adress, description) VALUES 
+<<<<<<< HEAD
+("Grande roue Montreal", "362 Rue de la Commune E, Montréal, QC H2Y 0B4" ,"");
+=======
 ("Grande roue Montreal", "362 Rue de la Commune E, Montréal, QC H2Y 0B4" , "Profitez d’une vue imprenable à 60 m de hauteur toute l’année, depuis la plus grande roue du Canada. Améliorez votre expérience en optant pour une télécabine privée ou devancez la foule grâce à l'option coupe-file.");
 ("Basilique Notre-Dame", "110 Rue Notre Dame O, Montréal, QC H2Y 1T1" , "description");
 ("Observatoire de la Tour de Montréal", "3200 Rue Viau, Montréal, QC H1V 3J3" , "description");
@@ -11,10 +14,17 @@ INSERT INTO site( name, adress, description) VALUES
 ("Parc olympique de Montréal", " 4545 Av. Pierre-De Coubertin, Montréal, QC H1V 3N7" , "description");
 ("Oratoire Saint-Joseph du Mont-Royal", "3800 Chem. Queen Mary, Montréal, QC H3V 1H6" , "description");
 
+>>>>>>> e9320ec64ebe323df1178a22ccbbc921ea8b4f08
 CREATE TABLE if not exists activity (id int(11) NOT NULL AUTO_INCREMENT, wording VARCHAR(50),  site_id INT(11),    price DECIMAL(4,1) , primary key(ID));
 ALTER TABLE activity 
 ADD CONSTRAINT FK_ACTIVITY_SITE FOREIGN KEY(site_id) REFERENCES site(id);
 INSERT INTO activity( wording, site_id, price) VALUES 
+<<<<<<< HEAD
+("Nage", 1, 4.0),
+("Socker", 1, 2.0),
+("Sky", 1, 0.0),
+("Course", 1,  4.0);
+=======
 ("Monter à la roue", 1, 30.0 ),
 ("Visite guidée dans le vieux port", 1, 25.0),
 ("visite guidée", 2, 35.0),
@@ -28,11 +38,19 @@ INSERT INTO activity( wording, site_id, price) VALUES
 ("Visite au Biodôme", 6, 25.0),
 ("Visite guidée en bus", 7, 30.0),
 ("Visite nocturne guidée en petit groupe", 7, 35.0);
+>>>>>>> e9320ec64ebe323df1178a22ccbbc921ea8b4f08
 
 CREATE TABLE if not exists images (id int(11) NOT NULL AUTO_INCREMENT, path VARCHAR(50),  item_id INT(11),type INT(1) , primary key(ID));
 ;
 
 INSERT INTO images( path, item_id, type) VALUE
+<<<<<<< HEAD
+("neige.jpg", 1, 2),
+("sky.jpg", 2, 1);
+
+
+
+=======
 ("grande_roue.jpg", 1, 2),
 ("grande_roue1.png", 1, 1),
 ("basilique_exterieur.jpg",  2, 1),
@@ -51,6 +69,7 @@ INSERT INTO images( path, item_id, type) VALUE
 
 
 
+>>>>>>> e9320ec64ebe323df1178a22ccbbc921ea8b4f08
 CREATE TABLE if not exists user (id INT(11) NOT NULL AUTO_INCREMENT, email VARCHAR(50), password VARCHAR(100),  gender  INT(1), PRIMARY KEY(id));
 
 ALTER TABLE user 
@@ -73,7 +92,10 @@ CREATE TABLE if not exists command (id INT(11)  NOT NULL AUTO_INCREMENT, client_
 ALTER TABLE command 
 
 ADD CONSTRAINT FK_COMMENT_USER FOREIGN KEY(client_id) REFERENCES user(id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9320ec64ebe323df1178a22ccbbc921ea8b4f08
 
 INSERT INTO command(client_id) VALUES 
 ( 1),
@@ -81,6 +103,15 @@ INSERT INTO command(client_id) VALUES
 ( 1),
 (3);
 
+<<<<<<< HEAD
+=======
+INSERT INTO command(client_id) VALUES 
+( 1),
+( 2),
+( 1),
+(3);
+
+>>>>>>> e9320ec64ebe323df1178a22ccbbc921ea8b4f08
 
 CREATE TABLE if not exists CommandLine (id INT(11) NOT NULL AUTO_INCREMENT, activity_id INT(11),   command_id INT(11),  visitorsNumber INT(11),  PRIMARY KEY(id));
 ALTER TABLE CommandLine
