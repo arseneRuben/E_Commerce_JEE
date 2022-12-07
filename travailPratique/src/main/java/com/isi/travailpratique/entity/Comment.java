@@ -2,26 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.isi.travailpratique.bean;
-
+package com.isi.travailpratique.entity;
 /**
  *
  * @author isi
  */
 public class Comment {
 
-    int id;
+    int comment_id;
     private String comment;
+    int commentLine_id;
 //    private DateTime createdAT;
-    private Site site;
     private User author;
 
+    public Comment() {
+    }
+
     public int getId() {
-        return id;
+        return comment_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.comment_id = id;
     }
 
     public String getComment() {
@@ -30,14 +32,6 @@ public class Comment {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
     }
 
     public User getAuthor() {
