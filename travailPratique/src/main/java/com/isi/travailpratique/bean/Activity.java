@@ -8,10 +8,6 @@ package com.isi.travailpratique.bean;
  *
  * @author isi
  */
-public class Site {
-    private int id;
-    private String name ;
-    private String address;
-    private String description;
+public class Activity {
     
 }
