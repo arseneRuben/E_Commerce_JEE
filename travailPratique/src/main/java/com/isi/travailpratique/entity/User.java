@@ -13,14 +13,12 @@ public class User  extends Entity{
     private String email;
     private String password;
     private int gender;
-    private boolean status ;
 
-    public User(int id,String email, String password, int gender, boolean status) {
+    public User(int id,String email, String password, int gender) {
         super(id);
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.status = status;
     }
 
     
@@ -48,13 +46,7 @@ public class User  extends Entity{
         this.gender = gender;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+   
     
     
     

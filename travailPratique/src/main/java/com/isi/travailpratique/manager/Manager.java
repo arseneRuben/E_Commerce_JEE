@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  * @author isi
  */
 public abstract class Manager {
-    protected static String dbName="contactdb";
+    protected static String dbName="visites";
     protected static String urlServeur = "jdbc:mariadb://localhost:3306/" + dbName;
     protected static String username = "root";
     protected static String password = "abc123...";
@@ -21,7 +21,6 @@ public abstract class Manager {
     protected  PreparedStatement statement;
     protected  ResultSet result;
     protected String query;
-    
     
     
    
