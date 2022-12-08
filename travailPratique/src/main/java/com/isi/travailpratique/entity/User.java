@@ -9,14 +9,14 @@ package com.isi.travailpratique.entity;
  *
  * @author isi
  */
-public class User {
-    private int id;
+public class User  extends Entity{
     private String email;
     private String password;
     private int gender;
     private boolean status ;
 
-    public User(String email, String password, int gender, boolean status) {
+    public User(int id,String email, String password, int gender, boolean status) {
+        super(id);
         this.email = email;
         this.password = password;
         this.gender = gender;

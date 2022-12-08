@@ -12,7 +12,7 @@ public class Comment {
     int comment_id;
     private String comment;
     int commentLine_id;
-//    private DateTime createdAT;
+//private DateTime createdAT;
     private User author;
 
     public Comment() {
@@ -21,7 +21,7 @@ public class Comment {
     public int getId() {
         return comment_id;
     }
-
+ 
     public void setId(int id) {
         this.comment_id = id;
     }

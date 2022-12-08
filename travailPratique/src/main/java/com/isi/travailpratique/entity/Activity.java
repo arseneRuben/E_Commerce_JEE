@@ -1,6 +1,6 @@
 package com.isi.travailpratique.entity;
 
-public class Activity {
+public class Activity  {
 
     private int site_id;
     private String wording;
