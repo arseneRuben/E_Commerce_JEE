@@ -42,8 +42,8 @@ public class UserManager extends Manager {
         }
         return users;
     }
-    
-    public static User findById(int id) {
+
+    public static User findOneById(int id) {
         User output = null;
         String query = "SELECT * FROM user WHERE id = ?;";
         try {
@@ -66,9 +66,8 @@ public class UserManager extends Manager {
         }
         return output;
     }
-    
-    
-     public static User findById(String email) {
+
+    public static User findOneByEmail(String email) {
         User output = null;
         String query = "SELECT * FROM user WHERE email = ?;";
         try {
@@ -90,6 +89,51 @@ public class UserManager extends Manager {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return output;
+    }
+
+    public static User findOneByEmail(String email, String pwd) {
+        User output = null;
+        String query = "SELECT * FROM user WHERE email = ? AND password=?;";
+        try {
+            connexion = DriverManager.getConnection(urlServeur, username, password);
+            PreparedStatement ps = connexion.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(1, pwd);
+            ResultSet result = ps.executeQuery();
+            if (result.next() == true) {
+                int id = result.getInt("id");
+
+                int gender = result.getInt("gender");
+                output = new User(id, email, pwd, gender);
+
+            }
+            if (connexion != null) {
+                connexion.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return output;
+    }
+    
+    public static int insert(User user) {
+        int result = -1;
+        String query = "INSERT  INTO  user(id, email, password, gender)  VALUES  (?, ?, ?,?) ;";
+        try {
+            connexion = DriverManager.getConnection(urlServeur, username, password);
+            PreparedStatement ps = connexion.prepareStatement(query);
+            ps.setInt(1, user.getId());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+             ps.setInt(3, user.getGender());
+            result = ps.executeUpdate();
+            if (connexion != null) {
+                connexion.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 
 }
