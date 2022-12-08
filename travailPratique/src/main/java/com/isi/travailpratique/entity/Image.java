@@ -6,24 +6,11 @@ private String path;
 private int activity_id;
 
 
-    public Image() {
-    }
-
-    public Image(int id,int site_id, String path, int activity_id) {
+    public Image(int id,int site_id, String path) {
         super(id);
         this.site_id = site_id;
         this.path = path;
-        this.activity_id = activity_id;
     }
-
-    public int getSite_id() {
-        return site_id;
-    }
-
-    public void setSite_id(int site_id) {
-        this.site_id = site_id;
-    }
-
     public String getPath() {
         return path;
     }

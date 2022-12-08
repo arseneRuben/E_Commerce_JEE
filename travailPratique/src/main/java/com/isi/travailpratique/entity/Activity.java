@@ -1,18 +1,10 @@
 package com.isi.travailpratique.entity;
 
-public class Activity extends Entity  {
-    private int site_id;
+public class Activity extends Entity {
+
     private String wording;
     private String image;
     private Float price;
-
-    public int getSite_id() {
-        return site_id;
-    }
-
-    public void setSite_id(int site_id) {
-        this.site_id = site_id;
-    }
 
     public String getWording() {
         return wording;
@@ -38,15 +30,12 @@ public class Activity extends Entity  {
         this.price = price;
     }
 
-    public Activity(int id,int site_id, String wording, String image, Float price) {
+    public Activity(int id, String wording, String image, Float price) {
         super(id);
-        this.site_id = site_id;
         this.wording = wording;
         this.image = image;
         this.price = price;
     }
 
-    public Activity() {
-
-    }
+   
 }
