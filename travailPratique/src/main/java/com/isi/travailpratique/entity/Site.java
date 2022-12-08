@@ -8,35 +8,24 @@ package com.isi.travailpratique.entity;
  *
  * @author isi
  */
-public class Site {
-    private int id;
+public class Site extends Entity{
+    
     private String name ;
     private String address;
     private String description;
 
     public Site(int id, String name, String address, String description) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.address = address;
         this.description = description;
     }
 
-    public Site(String name, String address, String description) {
-        this.name = name;
-        this.address = address;
-        this.description = description;
-    }
+  
     
     
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+   
     public String getName() {
         return name;
     }
