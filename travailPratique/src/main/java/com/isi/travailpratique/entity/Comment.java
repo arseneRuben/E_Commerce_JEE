@@ -3,43 +3,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.isi.travailpratique.entity;
+
+import java.util.Date;
+
 /**
  *
  * @author isi
  */
-public class Comment {
+public class Comment extends Entity{
 
-    int comment_id;
-    private String comment;
+    private String content;
     int commentLine_id;
-//private DateTime createdAT;
-    private User author;
+    private Date created_at;
+    private User author_id;
 
-    public Comment() {
+    public Comment(String content, int commentLine_id, Date created_at, User author_id, int id) {
+        super(id);
+        this.content = content;
+        this.commentLine_id = commentLine_id;
+        this.created_at = created_at;
+        this.author_id = author_id;
     }
 
-    public int getId() {
-        return comment_id;
-    }
- 
-    public void setId(int id) {
-        this.comment_id = id;
+    public String getContent() {
+        return content;
     }
 
-    public String getComment() {
-        return comment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public int getCommentLine_id() {
+        return commentLine_id;
     }
 
-    public User getAuthor() {
-        return author;
+    public void setCommentLine_id(int commentLine_id) {
+        this.commentLine_id = commentLine_id;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public Date getCreated_at() {
+        return created_at;
     }
 
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public User getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(User author_id) {
+        this.author_id = author_id;
+    }
+
+  
+   
+
+   
+
+   
 }
