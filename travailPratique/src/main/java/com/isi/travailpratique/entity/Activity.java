@@ -1,7 +1,6 @@
 package com.isi.travailpratique.entity;
 
 public class Activity extends Entity  {
-    private int activity_id;
     private int site_id;
     private String wording;
     private String image;
@@ -39,8 +38,8 @@ public class Activity extends Entity  {
         this.price = price;
     }
 
-    public Activity(int site_id, String wording, String image, Float price) {
-        this.activity_id=super.id;
+    public Activity(int id,int site_id, String wording, String image, Float price) {
+        super(id);
         this.site_id = site_id;
         this.wording = wording;
         this.image = image;

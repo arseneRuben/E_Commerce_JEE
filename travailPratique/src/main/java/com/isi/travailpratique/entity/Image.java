@@ -4,13 +4,13 @@ public class Image extends Entity {
 private int site_id;
 private String path;
 private int activity_id;
-private int image_id;
+
 
     public Image() {
     }
 
-    public Image(int site_id, String path, int activity_id) {
-        this.image_id=super.id;
+    public Image(int id,int site_id, String path, int activity_id) {
+        super(id);
         this.site_id = site_id;
         this.path = path;
         this.activity_id = activity_id;
