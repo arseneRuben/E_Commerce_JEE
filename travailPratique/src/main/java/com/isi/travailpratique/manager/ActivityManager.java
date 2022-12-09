@@ -10,11 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ActivityManager extends Manager {
-    public static ArrayList<Activity> activities=new ArrayList<>();
-    
-    public static ArrayList<Activity> findBy(int site_id){
-    
-     String query = "select * from activity where id = ?;";
+
+    public static ArrayList<Activity> findById(int site_id) {
+        ArrayList<Activity> activities = new ArrayList<>();
+        String query = "select * from activity where site_id = ?;";
+
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
@@ -23,9 +23,9 @@ public class ActivityManager extends Manager {
             while (result.next()) {
                 int id = result.getInt("id");
                 String wording = result.getString("wording");
-                String image = result.getString("image");
+                // String image = result.getString("image");
                 float price = result.getFloat("price");
-                activities.add(new Activity(id, wording,image,price));
+                activities.add(new Activity(id, wording, "image", price));
             }
             if (connexion != null) {
                 connexion.close();
@@ -34,9 +34,11 @@ public class ActivityManager extends Manager {
             Logger.getLogger(ActivityManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return activities;
-    } 
-public static ArrayList<Activity> findBy(String name){
-   String query = "select * from activity where name = ?;";
+    }
+
+    public static ArrayList<Activity> findByName(String name) {
+        ArrayList<Activity> activities = new ArrayList<>();
+        String query = "select * from activity where wording = ?;";
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
@@ -45,17 +47,30 @@ public static ArrayList<Activity> findBy(String name){
             while (result.next()) {
                 int id = result.getInt("id");
                 String wording = result.getString("wording");
-                String image = result.getString("image");
+                //String image = result.getString("image");
                 float price = result.getFloat("price");
-                activities.add(new Activity(id, wording,image,price));
+                activities.add(new Activity(id, wording, "image", price));
             }
             if (connexion != null) {
                 connexion.close();
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ActivityManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActivityManager.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return activities;
-}
+    }
 
+    public static void main(String args[]) {
+        ArrayList<Activity> activityList = ActivityManager.findById(1);
+        for (Activity activity : activityList) {
+            System.out.printf("Activity id:%d,  wording:%s,   price:%f\n", activity.getId(), activity.getWording(), activity.getPrice());
+        }
+        System.out.println("********************************************************************");
+        ArrayList<Activity> activities = ActivityManager.findByName("Course");
+        for (Activity activity : activities) {
+            System.out.printf("Activity id:%d,  wording:%s,   price:%f\n", activity.getId(), activity.getWording(), activity.getPrice());
+        }
+    }
 }
