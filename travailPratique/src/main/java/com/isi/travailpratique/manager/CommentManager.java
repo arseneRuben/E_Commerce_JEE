@@ -18,22 +18,21 @@ import java.util.logging.Logger;
 
 public class CommentManager extends Manager {
 
-    public static ArrayList<Comment> findById(int activity_id) {
+    public static ArrayList<Comment> findById(int commandLine_id) {
         ArrayList<Comment> comments = new ArrayList<>();
-        String query = "select * from comment where activity_id = ?;";
+        String query = "select * from comment where commandLine_id = ?;";
 
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
-            ps.setInt(1, activity_id);
+            ps.setInt(1, commandLine_id);
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int id = result.getInt("id");
                 String content = result.getString("content");
-                // String image = result.getString("image");
-              //  Date createdAt = result.getDate("createdAt");
-                int commandLine_id= result.getInt("commandLine_Id");
-                comments,add(new Comment ( content,commandLine_id, id));
+                Date createdAt = result.getDate("createdAt");
+                int commandLineId = result.getInt("commandLine_id");
+                comments.add(new Comment(content, commandLineId, createdAt, id));
             }
             if (connexion != null) {
                 connexion.close();
@@ -42,6 +41,18 @@ public class CommentManager extends Manager {
             Logger.getLogger(ActivityManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return comments;
+    }
+
+    public static void main(String args[]) {
+        ArrayList<Comment> comments = CommentManager.findById(5);
+        for (Comment comment : comments) {
+            System.out.println(comment.getId());
+            System.out.println(comment.getContent());
+            System.out.println(comment.getCreated_at());
+            System.out.println(comment.getCommentLine_id());
+
+        }
+
     }
 
 }

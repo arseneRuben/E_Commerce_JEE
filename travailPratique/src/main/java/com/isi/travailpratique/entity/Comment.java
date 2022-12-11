@@ -17,11 +17,11 @@ public class Comment extends Entity{
     private Date created_at;
     private User author_id;
 
-    public Comment(String content, int commentLine_id, int id) {
+    public Comment(String content, int commentLine_id, Date created_at, int id) {
         super(id);
         this.content = content;
         this.commentLine_id = commentLine_id;
-     //   this.created_at = created_at;
+        this.created_at = created_at;
     }
     
 
