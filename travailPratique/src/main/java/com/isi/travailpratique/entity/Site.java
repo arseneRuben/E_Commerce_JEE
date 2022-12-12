@@ -8,9 +8,9 @@ package com.isi.travailpratique.entity;
  *
  * @author isi
  */
-public class Site extends Entity{
-    
-    private String name ;
+public class Site extends Entity {
+
+    private String name;
     private String address;
     private String description;
 
@@ -21,12 +21,7 @@ public class Site extends Entity{
         this.description = description;
     }
 
-  
-    
-    
-
-   
-    public String getName() {
+        public String getName() {
         return name;
     }
 
@@ -50,4 +45,9 @@ public class Site extends Entity{
         this.description = description;
     }
     
+    public String toString(){
+        
+        return this.id + " " + this.name; 
+    }
+
 }

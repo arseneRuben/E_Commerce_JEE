@@ -20,7 +20,7 @@ public class CommentManager extends Manager {
 
     public static ArrayList<Comment> findById(int commandLine_id) {
         ArrayList<Comment> comments = new ArrayList<>();
-        String query = "select * from comment where commandLine_id = ?;";
+        String query = "select * from comment where _id = ?;";
 
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
