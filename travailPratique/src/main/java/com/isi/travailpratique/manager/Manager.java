@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.isi.travailpratique.manager;
 
 import java.sql.Connection;
@@ -12,19 +8,17 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 
-/**
- *
- * @author isi
- */
 public abstract class Manager {
-    protected static String dbName="visites";
-    protected static String urlServeur = "jdbc:mariadb://localhost:3310/" + dbName;
+
+    protected static String dbName = "visites";
+    protected static String urlServeur = "jdbc:mariadb://localhost:3306/" + dbName;
     protected static String username = "root";
     protected static String password = "abc123...";
     protected static Connection connexion;
-    protected  PreparedStatement statement;
-    protected  ResultSet result;
+    protected PreparedStatement statement;
+    protected ResultSet result;
     protected String query;
+
     
         
     protected static Connection getConnection() throws ClassNotFoundException, SQLException{
@@ -40,7 +34,6 @@ public abstract class Manager {
         if(connection != null){
             connection.close();
         }
-    }
+    }}
    
 
-}

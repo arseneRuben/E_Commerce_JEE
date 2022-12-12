@@ -44,7 +44,7 @@ public class CommentManager extends Manager {
     }
 
     public static void main(String args[]) {
-        ArrayList<Comment> comments = CommentManager.findById(5);
+        ArrayList<Comment> comments = CommentManager.findById(1);
         for (Comment comment : comments) {
             System.out.println(comment.getId());
             System.out.println(comment.getContent());
