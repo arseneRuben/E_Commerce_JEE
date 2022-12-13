@@ -26,7 +26,7 @@ public class CommandManager {
 
     public static int addCommandLine(CommandLine commandLine) {
         int result = -1;
-        String query = "INSERT  INTO  Command(activity_id, command_id,visitorsNumber )  VALUES  (?, ?, ?) ;";
+        String query = "INSERT  INTO  commands(client_id,createdAt )  VALUES  (?, ?) ;";
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
