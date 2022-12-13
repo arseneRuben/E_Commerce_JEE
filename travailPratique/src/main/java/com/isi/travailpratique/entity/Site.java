@@ -4,6 +4,9 @@
  */
 package com.isi.travailpratique.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author isi
@@ -13,13 +16,25 @@ public class Site extends Entity {
     private String name;
     private String address;
     private String description;
+    private List<Image> images;
 
     public Site(int id, String name, String address, String description) {
         super(id);
         this.name = name;
         this.address = address;
         this.description = description;
+        this.images = new ArrayList<>();
     }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+    
+    
 
         public String getName() {
         return name;

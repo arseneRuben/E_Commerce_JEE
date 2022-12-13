@@ -1,7 +1,6 @@
 package com.isi.travailpratique.manager;
 
 import com.isi.travailpratique.entity.Activity;
-import com.isi.travailpratique.entity.Site;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ public class ActivityManager extends Manager {
     
         public static ArrayList<Activity> findAll() {
         ArrayList<Activity> activities = new ArrayList<>();
-;        String query = "SELECT * FROM  activities;";
+        String query = "SELECT * FROM  activities;";
 
         try {
             Connection connection = Manager.getConnection();
@@ -26,7 +25,10 @@ public class ActivityManager extends Manager {
                 String wording = result.getString("wording");
                 int site_id = result.getInt("site_id");
                 Float price = result.getFloat("price");
-                activities.add(new Activity(id, wording, site_id, price));
+                Activity act = new Activity(id, wording, site_id, price);
+                act.setImages(ImageManager.findByActivity(id));
+                activities.add(act);
+                
             }
             Manager.closeConnection(connection);
 
@@ -51,7 +53,10 @@ public class ActivityManager extends Manager {
                 String wording = result.getString("wording");
                 int site_id = result.getInt("site_id");
                 float price = result.getFloat("price");
-               activiity = (new Activity(id, wording, site_id,  price));
+                activiity = new Activity(id, wording, site_id, price);
+                activiity.setImages(ImageManager.findByActivity(id));
+                
+               
             }
             if (connexion != null) {
                 connexion.close();
@@ -65,7 +70,7 @@ public class ActivityManager extends Manager {
 
     public static ArrayList<Activity> findBySiteId(int site_id) {
         ArrayList<Activity> activities = new ArrayList<>();
-        String query = "select * from activities where site_id = ?;";
+        String query = "SELECT * FROM activities WHERE site_id = ?;";
 
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
@@ -75,9 +80,10 @@ public class ActivityManager extends Manager {
             while (result.next()) {
                 int id = result.getInt("id");
                 String wording = result.getString("wording");
-                // String image = result.getString("image");
                 float price = result.getFloat("price");
-                activities.add(new Activity(id, wording, site_id,  price));
+                Activity act = new Activity(id, wording, site_id, price);
+                act.setImages(ImageManager.findByActivity(id));
+                activities.add(act);
             }
             if (connexion != null) {
                 connexion.close();
@@ -90,7 +96,7 @@ public class ActivityManager extends Manager {
 
     public static ArrayList<Activity> findByName(String name) {
         ArrayList<Activity> activities = new ArrayList<>();
-        String query = "select * from activities  where wording  like  ?;";
+        String query = "SELECT * FROM activities  WHERE wording  LIKE  ?;";
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
@@ -101,7 +107,9 @@ public class ActivityManager extends Manager {
                 String wording = result.getString("wording");
                 int  site_id = result.getInt("site_id");
                 float price = result.getFloat("price");
-                activities.add(new Activity(id, wording, site_id, price));
+                Activity act = new Activity(id, wording, site_id, price);
+                act.setImages(ImageManager.findByActivity(id));
+                activities.add(act);
             }
             if (connexion != null) {
                 connexion.close();

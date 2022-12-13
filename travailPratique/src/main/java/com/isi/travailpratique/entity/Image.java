@@ -1,16 +1,18 @@
 package com.isi.travailpratique.entity;
 
 public class Image extends Entity {
-private int site_id;
+private int item_id;
 private String path;
-private int activity_id;
+private int type;  // 1-->Site   2-->Activity
 
 
-    public Image(int id,int site_id, String path) {
+    public Image(int id,String path, int item_id) {
         super(id);
-        this.site_id = site_id;
+        this.item_id = item_id;
         this.path = path;
     }
+    
+   
     public String getPath() {
         return path;
     }
@@ -19,11 +21,21 @@ private int activity_id;
         this.path = path;
     }
 
-    public int getActivity_id() {
-        return activity_id;
+    public int getItem_id() {
+        return item_id;
     }
 
-    public void setActivity_id(int activity_id) {
-        this.activity_id = activity_id;
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+  
 }

@@ -15,9 +15,8 @@ public class Comment extends Entity{
     private String content;
     int commentLine_id;
     private Date created_at;
-    private User author_id;
 
-    public Comment(String content, int commentLine_id, Date created_at, int id) {
+    public Comment(int id,String content, int commentLine_id, Date created_at) {
         super(id);
         this.content = content;
         this.commentLine_id = commentLine_id;
@@ -25,13 +24,7 @@ public class Comment extends Entity{
     }
     
 
-    public Comment(String content, int commentLine_id, Date created_at, User author_id, int id) {
-        super(id);
-        this.content = content;
-        this.commentLine_id = commentLine_id;
-        this.created_at = created_at;
-        this.author_id = author_id;
-    }
+   
 
     public String getContent() {
         return content;
@@ -56,19 +49,6 @@ public class Comment extends Entity{
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
-
-    public User getAuthor_id() {
-        return author_id;
-    }
-
-    public void setAuthor_id(User author_id) {
-        this.author_id = author_id;
-    }
-
-  
-   
-
-   
 
    
 }

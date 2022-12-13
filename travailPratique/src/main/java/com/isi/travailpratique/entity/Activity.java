@@ -1,11 +1,25 @@
 package com.isi.travailpratique.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Activity extends Entity {
 
     private String wording;
     private int site_id;
     private Float price;
+    private List<Image> images;
 
+    
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    
     public String getWording() {
         return wording;
     }
@@ -35,6 +49,7 @@ public class Activity extends Entity {
         this.wording = wording;
         this.site_id = site;
         this.price = price;
+        this.images = new ArrayList<>();
     }
 
     

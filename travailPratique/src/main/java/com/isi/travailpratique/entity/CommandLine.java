@@ -8,33 +8,27 @@ package com.isi.travailpratique.entity;
  *
  * @author isi
  */
-public class CommandLine {
-    private int id;
+public class CommandLine extends Entity{
+    
     private int command_id;
     private int activity_id;
     private int visitorsNumber;
 
     public CommandLine(int id, int command_id, int activity_id, int visitorsNumber) {
-        this.id = id;
+        super(id);
         this.command_id = command_id;
         this.activity_id = activity_id;
         this.visitorsNumber = visitorsNumber;
     }
 
     public CommandLine(int command_id, int activity_id, int visitorsNumber) {
+        super(0);
         this.command_id = command_id;
         this.activity_id = activity_id;
         this.visitorsNumber = visitorsNumber;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+   
     public int getCommand_id() {
         return command_id;
     }

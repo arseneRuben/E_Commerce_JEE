@@ -4,7 +4,6 @@
  */
 package com.isi.travailpratique.manager;
 
-
 import com.isi.travailpratique.entity.Site;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,21 +18,25 @@ import java.util.logging.Logger;
  * @author isi
  */
 public class SiteManager extends Manager {
-    
+
     public static ArrayList<Site> findAll() {
         ArrayList<Site> sites = new ArrayList<>();
-;        String query = "SELECT * FROM  sites;";
+        String query = "SELECT * FROM  sites;";
 
         try {
             Connection connection = Manager.getConnection();
             PreparedStatement ps = Manager.getPreparedStatement(connection, query);
+
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int id = result.getInt("id");
+                
                 String name = result.getString("name");
                 String address = result.getString("address");
                 String description = result.getString("description");
-                sites.add(new Site(id, name, address, description));
+                Site site = new Site(id, name, address, description);
+                site.setImages(ImageManager.findBySite(id));
+                sites.add(site);
             }
             Manager.closeConnection(connection);
 
@@ -42,10 +45,8 @@ public class SiteManager extends Manager {
         }
         return sites;
     }
-    
-    
-        public static void main(String ...args){
-  
-       System.out.print(SiteManager.findAll());
-}
+
+    public static void main(String... args) {
+        System.out.print(SiteManager.findAll());
+    }
 }

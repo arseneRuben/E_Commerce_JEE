@@ -6,6 +6,7 @@ package com.isi.travailpratique.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.Date;
 public class Command extends Entity {
     private int client_id;
     private Date createdAt;
-    private ArrayList<CommandLine> commnadLines;
+    private List<CommandLine> commnadLines;
 
     public int getClient_id() {
         return client_id;
@@ -32,7 +33,7 @@ public class Command extends Entity {
         this.createdAt = createdAt;
     }
 
-    public ArrayList<CommandLine> getCommnadLines() {
+    public List<CommandLine> getCommnadLines() {
         return commnadLines;
     }
 
@@ -40,7 +41,7 @@ public class Command extends Entity {
         this.commnadLines = commnadLines;
     }
 
-    public Command(int id,int client_id, Date createdAt, ArrayList<CommandLine> commnadLines) {
+    public Command(int id,int client_id, Date createdAt, List<CommandLine> commnadLines) {
         super(id);
         this.client_id = client_id;
         this.createdAt = createdAt;
