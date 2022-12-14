@@ -6,7 +6,6 @@ package com.isi.travailpratique.manager;
 
 import com.isi.travailpratique.entity.Site;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,10 +60,9 @@ public class SiteManager extends Manager {
                 String wording = result.getString("name");
                 String address = result.getString("address");
                 String description = result.getString("description");
-
                 site = new Site(id, wording, address, description);
                 site.setImages(ImageManager.findByActivity(id));
-
+                site.setActivities(ActivityManager.findBySiteId(id));
             }
             if (connexion != null) {
                 connexion.close();
