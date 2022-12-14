@@ -18,8 +18,6 @@
         <%@include file="partials/head.jsp" %>
     </head>
     <body>
-        <div class="header-area">            <%@include file="partials/header.jsp" %>
-        </div>
         <%@include file="partials/nav.jsp" %>
    
 
@@ -48,7 +46,7 @@
                                 <div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>
                                 </div>
 
-                                <form id="login-form-wrap" class="login collapse" method="post">
+                                <form id="login-form-wrap" class="login collapse" method="get">
 
 
                                     <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>
@@ -67,12 +65,10 @@
 
 
                                     <p class="form-row">
-                                        <input type="submit" value="Login" name="login" class="button">
+                                        <input type="submit" value="Login" class="button">
                                         <label class="inline" for="rememberme"><input type="checkbox" value="forever" id="rememberme" name="rememberme"> Remember me </label>
                                     </p>
-                                    <p class="lost_password">
-                                        <a href="#">Lost your password?</a>
-                                    </p>
+                                   
 
                                     <div class="clear"></div>
                                 </form>
