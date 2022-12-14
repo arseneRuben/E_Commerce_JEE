@@ -5,7 +5,9 @@
 package com.isi.travailpratique.controller;
 
 import com.isi.travailpratique.entity.Activity;
+import com.isi.travailpratique.entity.Site;
 import com.isi.travailpratique.manager.ActivityManager;
+import com.isi.travailpratique.manager.SiteManager;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -34,13 +36,18 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Activity> activities = ActivityManager.findAll();
+        List<Site> sites = SiteManager.findAll();
+
         if (request.getParameter("id") != null) {
             Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("id")));
             request.setAttribute("activity", activity);
             request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
+            
 
         } else {
             request.setAttribute("activities", activities);
+            request.setAttribute("sites", sites);
+            System.out.println(sites.size());
         }
         request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 

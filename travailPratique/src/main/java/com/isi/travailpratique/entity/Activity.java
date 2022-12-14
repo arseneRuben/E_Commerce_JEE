@@ -1,5 +1,6 @@
 package com.isi.travailpratique.entity;
 
+import com.isi.travailpratique.manager.SiteManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,10 @@ public class Activity extends Entity {
     
     public List<Image> getImages() {
         return images;
+    }
+    
+    public Site getSite(){
+        return SiteManager.findById(this.site_id);
     }
 
     public void setImages(List<Image> images) {
