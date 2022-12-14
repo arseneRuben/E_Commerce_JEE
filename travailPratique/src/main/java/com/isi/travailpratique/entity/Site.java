@@ -17,6 +17,15 @@ public class Site extends Entity {
     private String address;
     private String description;
     private List<Image> images;
+    private List<Activity> activities;
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
 
     public Site(int id, String name, String address, String description) {
         super(id);
