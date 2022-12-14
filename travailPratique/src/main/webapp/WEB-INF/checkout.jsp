@@ -10,6 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     List<Activity> activities = (ArrayList<Activity>) request.getAttribute("activities");
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -20,9 +21,7 @@
         <div class="header-area">            <%@include file="partials/header.jsp" %>
         </div>
         <%@include file="partials/nav.jsp" %>
-        <div class="slider-area">
-            <%@include file="partials/slider.jsp" %>
-        </div>
+   
 
 
 
