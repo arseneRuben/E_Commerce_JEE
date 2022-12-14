@@ -41,7 +41,11 @@ public class IndexServlet extends HttpServlet {
         if (request.getParameter("id") != null) {
             Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("id")));
             request.setAttribute("activity", activity);
-            request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
+            //other activities of the same site
+            List<Activity> otherActivities = ActivityManager.findBySiteId(activity.getSite_id());
+             request.setAttribute("otherActivities", otherActivities);
+            request.getRequestDispatcher("WEB-INF/activity.jsp").forward(request, response);
+            
             
 
         } else {

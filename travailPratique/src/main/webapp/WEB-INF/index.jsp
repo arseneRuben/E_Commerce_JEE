@@ -36,7 +36,7 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo promo1">
                             <i class="fa fa-gift"></i>
-                            <p><%= site.getName()%></p>
+                            <p><%= site.getName() %></p>
                         </div>
                     </div>
                     <%
@@ -63,7 +63,7 @@
                                         <img src="img/grande_roue1.png" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="index?id=<%= activity.getId()%>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
@@ -81,8 +81,7 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- End main content area -->
-
+        </div> <!-- 
         <div class="brands-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
@@ -103,7 +102,7 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- End brands area -->
+        </div>
 
         <div class="product-widget-area">
             <div class="zigzag-bottom"></div>
