@@ -39,7 +39,6 @@ public class UserServlet extends HttpServlet {
                 String psw = request.getParameter("password");
 
                 if (UserManager.findOneBy(email, psw) != null) {
-//            Cookie cookieUser = new Cookie();
                     userSession = request.getSession(true);
                     userSession.setAttribute("user", UserManager.findOneBy(email, psw));
                     request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);

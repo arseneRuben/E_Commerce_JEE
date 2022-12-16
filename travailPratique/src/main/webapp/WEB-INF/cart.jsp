@@ -4,12 +4,18 @@
     Author     : isi
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+
 <%@page import="com.isi.travailpratique.entity.Activity"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     List<Activity> activities = (ArrayList<Activity>) request.getAttribute("activities");
+    HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+    HashMap<Integer, Activity> activitiesMap = (HashMap<Integer, Activity>) request.getAttribute("activitiesMap");
 %>
 <!DOCTYPE html>
 <html>
@@ -78,29 +84,33 @@
                                         <thead>
                                             <tr>
                                                 <th class="product-remove">&nbsp;</th>
-                                                <th class="product-thumbnail">&nbsp;</th>
+
                                                 <th class="product-name">Product</th>
                                                 <th class="product-price">Price</th>
                                                 <th class="product-quantity">Quantity</th>
-                                                <th class="product-subtotal">Total</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        
+                                            <% if (cart != null) {
+                                                  
+                                                  for(Map.Entry<Integer, Integer> entry : cart.entrySet()) { %>
                                             <tr class="cart_item">
                                                 <td class="product-remove">
                                                     <a title="Remove this item" class="remove" href="#">×</a> 
                                                 </td>
 
-                                                <td class="product-thumbnail">
-                                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
-                                                </td>
+
 
                                                 <td class="product-name">
-                                                    <a href="single-product.html">Ship Your Idea</a> 
+                                                    <a href="single-product.html">
+                                                        <%= activitiesMap.get(entry.getKey()).getWording() %>
+                                                       </a> 
                                                 </td>
 
                                                 <td class="product-price">
-                                                    <span class="amount">£15.00</span> 
+                                                    <span class="amount">$<%= activitiesMap.get(entry.getKey()).getPrice() %></span> 
                                                 </td>
 
                                                 <td class="product-quantity">
@@ -111,10 +121,10 @@
                                                     </div>
                                                 </td>
 
-                                                <td class="product-subtotal">
-                                                    <span class="amount">£15.00</span> 
-                                                </td>
+                                               
                                             </tr>
+                                            <% }
+                                                }%>
                                             <tr>
                                                 <td class="actions" colspan="6">
                                                     <div class="coupon">

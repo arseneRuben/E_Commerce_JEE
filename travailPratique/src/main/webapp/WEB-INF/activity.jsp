@@ -29,7 +29,53 @@
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                   
+
+                    <div class="col-md-6">
+                        <div class="product-content-right">
+                            <div class="product-breadcroumb">
+                                <a href="">Home</a>
+                                <a href=""><%= activity.getSite().getName()%></a>
+                                <a href=""><%= activity.getWording()%></a>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="product-images">
+                                        <div class="product-main-img">
+                                            <img src="img/neige.jpeg" alt="faute d'image de bonne taille on fixe cette image de maniere statique">
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-inner">
+                                        <h2 class="product-name"><%= activity.getWording()%></h2>
+                                        <div class="product-inner-price">
+                                            <ins>$<%= activity.getPrice()%></ins>
+                                        </div>    
+
+                                        <form method="post" action="cart" class="cart">
+                                            <div class="quantity">
+                                                <input type="hidden" name="activity" value="<%= activity.getId() %>" />
+                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                            </div>
+                                            <button class="add_to_cart_button" type="submit">Add to cart</button>
+                                        </form>   
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>                    
+                    </div>
+                </div>
+                                         <div class="col-md-6">
                         <div class="single-sidebar">
                             <h2 class="sidebar-title">Search Activity</h2>
                             <form action="">
@@ -56,50 +102,6 @@
 
 
                     </div>
-
-                    <div class="col-md-8">
-                        <div class="product-content-right">
-                            <div class="product-breadcroumb">
-                                <a href="">Home</a>
-                                <a href=""><%= activity.getSite().getName()%></a>
-                                <a href=""><%= activity.getWording()%></a>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="product-images">
-                                        <div class="product-main-img">
-                                            <img src="img/neige.jpeg" alt="">
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="product-inner">
-                                        <h2 class="product-name"><%= activity.getWording()%></h2>
-                                        <div class="product-inner-price">
-                                            <ins>$<%= activity.getPrice()%></ins>
-                                        </div>    
-
-                                        <form action="" class="cart">
-                                            <div class="quantity">
-                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                            </div>
-                                            <button class="add_to_cart_button" type="submit">Add to cart</button>
-                                        </form>   
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>                    
-                    </div>
-                </div>
             </div>
         </div>
 
