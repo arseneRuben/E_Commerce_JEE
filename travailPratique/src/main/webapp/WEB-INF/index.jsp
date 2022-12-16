@@ -31,7 +31,8 @@
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
-                    <%                          for (Site site : sites) {
+                    <%     if(sites != null){            
+                             for (Site site : sites) {
                     %>
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo promo1">
@@ -40,7 +41,7 @@
                         </div>
                     </div>
                     <%
-                        }
+                        }}
                     %>
 
                 </div>
@@ -56,6 +57,7 @@
                             <h2 class="section-title">Latest activities</h2>
                             <div class="product-carousel">
                                 <%
+                                    if(activities != null){
                                     for (Activity activity : activities) {
                                 %>
                                 <div class="single-product">
@@ -74,7 +76,7 @@
                                     </div> 
                                 </div>
                                 <%
-                                    }
+                                    }}
                                 %>
                             </div>
                         </div>

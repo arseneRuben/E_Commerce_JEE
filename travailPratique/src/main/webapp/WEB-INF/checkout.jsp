@@ -46,15 +46,15 @@
                                 <div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>
                                 </div>
 
-                                <form id="login-form-wrap" class="login collapse" method="get">
+                                <form id="login-form-wrap" action="signin" class="login collapse" method="get">
 
-
+ 
                                     <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>
 
                                     <p class="form-row form-row-first">
                                         <label for="username">Username or email <span class="required">*</span>
                                         </label>
-                                        <input type="text" id="username" name="username" class="input-text">
+                                        <input type="text" id="username" name="email" class="input-text">
                                     </p>
                                     <p class="form-row form-row-last">
                                         <label for="password">Password <span class="required">*</span>

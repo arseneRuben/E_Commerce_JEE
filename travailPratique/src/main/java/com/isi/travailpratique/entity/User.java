@@ -70,9 +70,9 @@ public class User extends Entity {
     public void setGender(int gender) {
         this.gender = gender;
     }
-    public String toString(){
-        
-        return this.id + " " + this.email; 
-    }
+//    public String toString(){
+//        
+//        return this.id + " " + this.email; 
+//    }
 
 }

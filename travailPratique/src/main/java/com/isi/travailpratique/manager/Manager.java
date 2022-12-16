@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public abstract class Manager {
 
     protected static String dbName = "visites";
-    protected static String urlServeur = "jdbc:mariadb://localhost:3306/" + dbName;
+    protected static String urlServeur = "jdbc:mariadb://localhost:3310/" + dbName;
     protected static String username = "root";
     protected static String password = "abc123...";
     protected static Connection connexion;

@@ -21,7 +21,7 @@ public class UserManager extends Manager {
 
     public static ArrayList<User> findAll() {
         ArrayList<User> users = new ArrayList<User>();
-        String query = "SELECT * FORM user;";
+        String query = "SELECT * FROM user;";
 
         try {
             Connection connection = Manager.getConnection();
@@ -114,9 +114,9 @@ public class UserManager extends Manager {
         try {
             Connection connection = Manager.getConnection();
             PreparedStatement ps = Manager.getPreparedStatement(connection, query);
-            ps.setInt(1, user.getId());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
+//            ps.setInt(1, user.getId());
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
             ps.setInt(3, user.getGender());
             result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys(); // retourne les clÃ©s autogÃ©nÃ©rÃ©es par la base de donnÃ©es
@@ -155,11 +155,9 @@ public class UserManager extends Manager {
         us.setEmail("user@gmail.com");
         int a = UserManager.update(us);
         System.out.print(a);*/
-       User ramat = new User( "raghghghgmaet@gmail.com", "pasghghswordRamat", 0 );
-       int id = UserManager.insert(ramat);
-       ramat.setId(id);
-          int a = UserManager.update(ramat);
-       System.out.print(UserManager.findOneById(id));
+       
+//       System.out.println(UserManager.findOneBy("UserManager","passwordRuben"));
+
 }
 
 }
