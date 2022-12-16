@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-sidebar">
-                            <h2 class="sidebar-title">Search Products</h2>
+                            <h2 class="sidebar-title">Search Activities</h2>
                             <form action="search">
                                 <input type="text" placeholder="Search products..." name="pattern">
                                 <input type="submit" value="Search">
@@ -53,7 +53,12 @@
                         </div>
                         <div class="single-sidebar">
                             <h2 class="sidebar-title">Products</h2>
-                            <% for (Activity a : activities) { %>
+
+                            <%
+                                if (activities != null) {
+                                    for (Activity a : activities) {
+
+                            %>
                             <div class="thubmnail-recent">
                                 <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                                 <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
@@ -61,7 +66,8 @@
                                     <ins>$700.00</ins> <del>$800.00</del>
                                 </div>             
                             </div>
-                            <% }%>
+                            <% }
+                                }%>
                         </div>
                     </div>
                     <div class="col-md-8">

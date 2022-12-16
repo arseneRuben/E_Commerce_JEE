@@ -18,11 +18,8 @@
         <%@include file="partials/head.jsp" %>
     </head>
     <body>
-        <%@include file="partials/nav.jsp" %>
-   
-
-
-
+      <%@include file="partials/header.jsp" %>
+ 
         <div class="product-big-title-area">
             <div class="container">
                 <div class="row">
@@ -40,19 +37,16 @@
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
-                     <div class="col-md-7">
+                     <div class="col-md-7 col-lg-6 col-xl-5 order-2 order-lg-1">
                         <div class="product-content-right">
                             <div class="woocommerce">
                                 <div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>
                                 </div>
-
                                 <form id="login-form-wrap" action="signin" class="login collapse" method="get">
-
- 
                                     <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>
 
                                     <p class="form-row form-row-first">
-                                        <label for="username">Username or email <span class="required">*</span>
+                                        <label for="username">Email <span class="required">*</span>
                                         </label>
                                         <input type="text" id="username" name="email" class="input-text">
                                     </p>
@@ -78,7 +72,12 @@
                             </div>                       
                         </div>                    
                     </div>
-                
+                    <div class="col-md-5 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                        <img src="image/tour_montreal_interieur.jpg"
+                                             class="img-fluid" alt="Sample image">
+
+                                    </div>
 
                 </div>
             </div>

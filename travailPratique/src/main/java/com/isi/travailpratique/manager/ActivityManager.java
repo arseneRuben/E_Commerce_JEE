@@ -96,7 +96,7 @@ public class ActivityManager extends Manager {
 
     public static ArrayList<Activity> findByName(String name) {
         ArrayList<Activity> activities = new ArrayList<>();
-        String query = "SELECT * FROM activities  WHERE wording  LIKE  ?;";
+        String query = "SELECT * FROM activities  WHERE wording  LIKE  \'% ? %\' ;";
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);
@@ -126,14 +126,15 @@ public class ActivityManager extends Manager {
        /* ArrayList<Activity> activityList = ActivityManager.findBySiteId(1);
         for (Activity activity : activityList) {
             System.out.printf("Activity id:%d,  wording:%s,   price:%f\n", activity.getId(), activity.getWording(), activity.getPrice());
-        }
+        } */
         System.out.println("********************************************************************");
-        ArrayList<Activity> activities = ActivityManager.findByName("Visite");
+        ArrayList<Activity> activities = ActivityManager.findByName("roue");
         for (Activity activity : activities) {
             System.out.printf("Activity id:%d,  wording:%s,   price:%f\n", activity.getId(), activity.getWording(), activity.getPrice());
-        }*/
-       Activity activity = ActivityManager.findById(2);
+        }
+          /* 
+       Activity activity = ActivityManager.findBy(2);
          System.out.printf("Activity id:%d,  wording:%s,   price:%f\n", activity.getId(), activity.getWording(), activity.getPrice());
-       
+       */
     }
 }

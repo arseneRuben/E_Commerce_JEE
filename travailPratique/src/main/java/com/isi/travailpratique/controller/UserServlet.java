@@ -7,21 +7,18 @@ package com.isi.travailpratique.controller;
 import com.isi.travailpratique.entity.User;
 import com.isi.travailpratique.manager.UserManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
  * @author isi
  */
-@WebServlet(name = "UserServlet", urlPatterns = {"/signin", "/register", "/signout"})
+@WebServlet(name = "UserServlet", urlPatterns = {"/signin", "/signup", "/signout"})
 public class UserServlet extends HttpServlet {
 
     /**
@@ -51,7 +48,7 @@ public class UserServlet extends HttpServlet {
 
                 }
                 break;
-            case "/register":
+            case "/signup":
                 String emailRegis = request.getParameter("email");
                 String pswRegis = request.getParameter("password");
                 String pswCheck = request.getParameter("passwordCheck");
