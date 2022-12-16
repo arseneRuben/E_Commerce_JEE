@@ -20,9 +20,7 @@
         <%@include file="partials/head.jsp" %>
     </head>
     <body>
-        <div class="header-area">            <%@include file="partials/header.jsp" %>
-        </div>
-        <%@include file="partials/nav.jsp" %>
+        <%@include file="partials/header.jsp" %>
         <div class="slider-area">
             <%@include file="partials/slider.jsp" %>
         </div>
@@ -31,17 +29,18 @@
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
-                    <%     if(sites != null){            
-                             for (Site site : sites) {
+                    <%     if (sites != null) {
+                            for (Site site : sites) {
                     %>
                     <div class="col-md-3 col-sm-6">
-                        <div class="single-promo promo1">
+                        <div class="single-promo promo1"> <%= site.getName()%>
                             <i class="fa fa-gift"></i>
-                            <p><%= site.getName() %></p>
+                            <p><a href="site?id=<%=site.getId()%>" ><%= site.getName()%></a></p>
                         </div>
                     </div>
                     <%
-                        }}
+                            }
+                        }
                     %>
 
                 </div>
@@ -57,8 +56,8 @@
                             <h2 class="section-title">Latest activities</h2>
                             <div class="product-carousel">
                                 <%
-                                    if(activities != null){
-                                    for (Activity activity : activities) {
+                                    if (activities != null) {
+                                        for (Activity activity : activities) {
                                 %>
                                 <div class="single-product">
                                     <div class="product-f-image">
@@ -69,14 +68,15 @@
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html"><%= activity.getWording() %></a></h2>
+                                    <h2><a href="single-product.html"><%= activity.getWording()%></a></h2>
 
                                     <div class="product-carousel-price">
-                                        <ins>$<%= activity.getPrice() %></ins> $<%= activity.getSite().getName() %>
+                                        <ins>$<%= activity.getPrice()%></ins> $<%= activity.getSite().getName()%>
                                     </div> 
                                 </div>
                                 <%
-                                    }}
+                                        }
+                                    }
                                 %>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-
+    
         <div class="product-widget-area">
             <div class="zigzag-bottom"></div>
             <div class="container">

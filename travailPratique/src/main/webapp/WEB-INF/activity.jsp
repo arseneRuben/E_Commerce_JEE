@@ -20,9 +20,7 @@
         <%@include file="partials/head.jsp" %>
     </head>
     <body>
-        <div class="header-area">            <%@include file="partials/header.jsp" %>
-        </div>
-        <%@include file="partials/nav.jsp" %>
+        <%@include file="partials/header.jsp" %>
         <div class="slider-area">
             <%@include file="partials/slider.jsp" %>
         </div>
@@ -47,8 +45,8 @@
                             %>
                             <div class="thubmnail-recent">
                                 <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="index?id=<%= act.getId() %>"><%= act.getWording() %></a></h2>
-                                  
+                                <h2><a href="index?id=<%= act.getId()%>"><%= act.getWording()%></a></h2>
+
 
                             </div>
                             <%
@@ -56,7 +54,7 @@
                             %>
                         </div>
 
-                       
+
                     </div>
 
                     <div class="col-md-8">
