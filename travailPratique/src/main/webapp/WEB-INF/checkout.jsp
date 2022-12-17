@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-5 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                        <img src="image/tour_montreal_interieur.jpg"
+                        <img src="img/grande_roue.jpg"
                                              class="img-fluid" alt="Sample image">
 
                                     </div>
