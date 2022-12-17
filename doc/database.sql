@@ -39,22 +39,23 @@ CREATE TABLE if not exists images (id int(11) NOT NULL AUTO_INCREMENT, path VARC
 ;
 
 INSERT INTO images( path, item_id, type) VALUE
+("montreal_slide1.jpg", 1, 1),
+("montreal_slide2.jpg", 2, 1),
+("h4-slide2.png",  3, 1),
+("montreal_slide4.jpg", 4, 1),
+("h4-slide4.png", 5, 1),
+("parc_olympique_interieur.jpg", 6, 1),
+("montreal_slide3.jpg", 7, 1),
+("h4-slide2.png", 8, 1),
+
 ("product-5.jpg", 1, 2),
-("product-6.jpg", 2, 1),
-("product-1.jpg", 1, 2),
-("product-2.jpg", 1, 1),
-("product-3.jpg",  2, 1),
-("product-2.jpg",   2, 1),
-("product-3.jpg",  3, 1),
-("product-1.jpg", 3, 1),
-("product-2.jpg", 4, 1),
-("product-3.jpg",4, 1),
-("oratoire_exterieur.jpg", 5, 1),
-("mont_royal_vue_2.jpg",5, 1),
-("parc_olympique_exterieur.jpg", 6, 1),
-("parc_olympique_interieur.jpg",6, 1),
-("product-6.jpg", 7, 1),
-("oratoire_interieur.jpg", 7, 1);
+("product-1.jpg", 2, 2),
+("grande_roue.jpg",   2, 2),
+("iStock-515441828.jpg",4, 2),
+("oratoire_interieur.jpg", 4, 2),
+("strom_spa_exterieur.jpg",6, 2),
+("product-6.jpg", 7, 1);
+
 
 
 

@@ -21,29 +21,57 @@
     </head>
     <body>
         <%@include file="partials/header.jsp" %>
-        <div class="slider-area">
-            <%@include file="partials/slider.jsp" %>
-        </div>
+
 
         <div class="single-product-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
-                   
 
+                    <div class="col-md-6">
+                        <div class="single-sidebar">
+                            <h2 class="sidebar-title">Search Activity</h2>
+                            <form action="">
+                                <input type="text" placeholder="Search products...">
+                                <input type="submit" value="Search">
+                            </form>
+                        </div>
+
+                        <div class="single-sidebar">
+                            <h2 class="sidebar-title">Activities of the same site</h2>
+                            <%                                for (Activity act : otherActivities) {
+                            %>
+                            <div class="thubmnail-recent">
+                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                                <h2><a href="index?id=<%= act.getId()%>"><%= act.getWording()%></a></h2>
+
+
+                            </div>
+                            <%
+                                }
+                            %>
+                        </div>
+
+
+                    </div>
                     <div class="col-md-6">
                         <div class="product-content-right">
                             <div class="product-breadcroumb">
-                                <a href="">Home</a>
-                                <a href=""><%= activity.getSite().getName()%></a>
-                                <a href=""><%= activity.getWording()%></a>
+                                <a href="index">Home</a>
+                                <a href="site?id=<%=activity.getSite().getId()%>"><%= activity.getSite().getName()%></a>
+                                <a href="index?id=<%= activity.getId()%>"><%= activity.getWording()%></a>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="product-images">
                                         <div class="product-main-img">
+                                            <% if (activity.getImages().size() > 0) {%>
+                                            <img src="img/<%= activity.getImages().get(0).getPath() %>" alt="<%= activity.getImages().get(0).getPath() %>">
+
+                                            <% } else { %>
                                             <img src="img/neige.jpeg" alt="faute d'image de bonne taille on fixe cette image de maniere statique">
+                                            <% }%>                                            
                                         </div>
 
 
@@ -59,49 +87,18 @@
 
                                         <form method="post" action="cart" class="cart">
                                             <div class="quantity">
-                                                <input type="hidden" name="activity" value="<%= activity.getId() %>" />
+                                                <input type="hidden" name="activity" value="<%= activity.getId()%>" />
                                                 <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                             </div>
                                             <button class="add_to_cart_button" type="submit">Add to cart</button>
                                         </form>   
                                     </div>
-
                                 </div>
-
                             </div>
-
-
-
                         </div>                    
                     </div>
                 </div>
-                                         <div class="col-md-6">
-                        <div class="single-sidebar">
-                            <h2 class="sidebar-title">Search Activity</h2>
-                            <form action="">
-                                <input type="text" placeholder="Search products...">
-                                <input type="submit" value="Search">
-                            </form>
-                        </div>
 
-                        <div class="single-sidebar">
-                            <h2 class="sidebar-title">Activities of the same site</h2>
-                            <%
-                                for (Activity act : otherActivities) {
-                            %>
-                            <div class="thubmnail-recent">
-                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="index?id=<%= act.getId()%>"><%= act.getWording()%></a></h2>
-
-
-                            </div>
-                            <%
-                                }
-                            %>
-                        </div>
-
-
-                    </div>
             </div>
         </div>
 

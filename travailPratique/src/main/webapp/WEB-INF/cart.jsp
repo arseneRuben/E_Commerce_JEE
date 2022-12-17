@@ -77,7 +77,7 @@
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="woocommerce">
-                                <form method="post" action="#">
+                               
                                     <table cellspacing="0" class="shop_table cart">
                                         <thead>
                                             <tr>
@@ -86,7 +86,7 @@
                                                 <th class="product-name">Product</th>
                                                 <th class="product-price">Price</th>
                                                 <th class="product-quantity">Quantity</th>
-
+                                                 <th class="product-subtotal">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,18 +96,22 @@
                                                     for (Map.Entry<Integer, Integer> entry : cart.entrySet()) { %>
                                             <tr class="cart_item">
                                                 <td class="product-remove">
-                                                    <a title="Remove this item" class="remove" href="#">×</a> 
+                                                    <form method="post" action="cart">
+                                                        <input type="hidden" name="action" value="delete"/>
+                                                        <input type="hidden" name="activityId" value="<%= activitiesMap.get(entry.getKey()).getId() %>"/>
+                                                        <input type="submit" class="remove btn btn-danger" value="×"/>
+                                                    </form>
                                                 </td>
                                                 <td class="product-name">
 
-                                                    <a href="single-product.html">
+                                                    <a href="index?id=<%= activitiesMap.get(entry.getKey()).getId() %>">
                                                         <%= activitiesMap.get(entry.getKey()).getWording() %> 
                                                        </a> 
 
                                                 </td>
 
                                                 <td class="product-price">
-                                                    <span class="amount">$ <%= activitiesMap.get(entry.getKey()).getPrice() %>  </span> 
+                                                    <span class="amount">£ <%= activitiesMap.get(entry.getKey()).getPrice() %>  </span> 
                                                 </td>
 
                                                 <td class="product-quantity">
@@ -117,7 +121,9 @@
                                                         <input type="button" class="plus" value="+">
                                                     </div>
                                                 </td>
-
+                                                 <td class="product-subtotal">
+                                                <span class="amount">£ <%= activitiesMap.get(entry.getKey()).getPrice() * activitiesMap.get(entry.getKey()).getId() %> </span> 
+                                            </td>
 
                                             </tr>
                                             <% }
@@ -135,7 +141,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </form>
+                             
                             </div>
                         </div>
                     </div>

@@ -25,27 +25,7 @@
             <%@include file="partials/slider.jsp" %>
         </div>
 
-        <div class="promo-area">
-            <div class="zigzag-bottom"></div>
-            <div class="container">
-                <div class="row">
-                    <%     if (sites != null) {
-                            for (Site site : sites) {
-                    %>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-promo promo1"> <%= site.getName()%>
-                            <i class="fa fa-gift"></i>
-                            <p><a href="site?id=<%=site.getId()%>" ><%= site.getName()%></a></p>
-                        </div>
-                    </div>
-                    <%
-                            }
-                        }
-                    %>
 
-                </div>
-            </div>
-        </div> <!-- End promo area -->
 
         <div class="maincontent-area">
             <div class="zigzag-bottom"></div>
@@ -53,22 +33,25 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="latest-product">
-                            <h2 class="section-title">Latest activities</h2>
+                            <h2 class="section-title">Our activities</h2>
                             <div class="product-carousel">
-                                <%
-                                    if (activities != null) {
+                                <%                                    if (activities != null) {
                                         for (Activity activity : activities) {
                                 %>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="img/grande_roue1.png" alt="">
+                                        <% if (activity.getImages().size() > 0) {%>
+                                        <img src="img/<%= activity.getImages().get(0).getPath()%>" alt="<%= activity.getImages().get(0).getPath()%>">
+                                        <% } else { %>
+                                        <img src="img/grande_roue1.png" alt="Slide">
+                                        <% }%>
                                         <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+
                                             <a href="index?id=<%= activity.getId()%>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html"><%= activity.getWording()%></a></h2>
+                                    <h2><%= activity.getWording()%></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$<%= activity.getPrice()%></ins> $<%= activity.getSite().getName()%>

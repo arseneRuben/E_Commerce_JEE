@@ -83,8 +83,7 @@ public class IndexServlet extends HttpServlet {
                 int idSite = Integer.parseInt(request.getParameter("id"));
                 activities = ActivityManager.findBySiteId(idSite);
                 request.setAttribute("activities", activities);
-
-                //request.setAttribute("sites", SiteManager.findAll());
+                request.setAttribute("sites", sites);
                 request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
                 break;
