@@ -1,6 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.isi.travailpratique.entity.Site"%>
 <%@page import="com.isi.travailpratique.entity.User"%>
 <%
     User user = (User) session.getAttribute("user");
+    List<Site> sites = (ArrayList<Site>) request.getAttribute("sites");
+
 %>
 <div class="header-area">
     <div class="container">
@@ -37,14 +42,16 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png"></a></h1>
+                    <h1><a href="index"><img src="img/logo.png"></a></h1>
                 </div>
             </div>
 
             <div class="col-sm-6">
+                  <%  if(request.getServletPath().contains("cart") ){  %>
                 <div class="shopping-item">
-                    <a href="cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart">Cart <i class="fa fa-shopping-cart"></i> </a>
                 </div>
+                 <% } %>
             </div>
         </div>
     </div>
@@ -63,9 +70,10 @@
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index">Bienvenu(e)  <%= user.getEmail()%></a></li>
-                    <li><a href="cart"> Panier</a></li>
-                    <li><a href="logout">Logout</a></li>
+                    
+                    <li class="<%= request.getServletPath().contains("index")?"active":"" %>"><a href="index">Bienvenu(e)   <%= user.getEmail()  %>  </a></li>
+                    <li class="<%= request.getServletPath().contains("cart")?"active":"" %>" ><a href="cart"> Panier</a></li>
+                    <li><a href="signout">Logout</a></li>
 
 
 

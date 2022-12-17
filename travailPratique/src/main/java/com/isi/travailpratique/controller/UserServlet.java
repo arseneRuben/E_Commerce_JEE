@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author isi
  */
-@WebServlet(name = "UserServlet", urlPatterns = {"/signin", "/signup", "/signout"})
+@WebServlet(name = "UserServlet", urlPatterns = {"/signins", "/signups", "/signouts"})
 public class UserServlet extends HttpServlet {
 
     /**

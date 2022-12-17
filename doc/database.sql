@@ -4,15 +4,15 @@ USE visites;
 CREATE TABLE if not exists sites (id int(11) NOT NULL AUTO_INCREMENT, name VARCHAR(250), address VARCHAR(250), description LONGTEXT,  primary key(ID));
 INSERT INTO sites( name, address, description) VALUES 
 
-("Grande roue Montreal", "362 Rue de la Commune E, Montréal, QC H2Y 0B4" ,""),
+
 ("Grande roue Montreal", "362 Rue de la Commune E, Montréal, QC H2Y 0B4" , "Profitez d’une vue imprenable à 60 m de hauteur toute l’année, depuis la plus grande roue du Canada. Améliorez votre expérience en optant pour une télécabine privée ou devancez la foule grâce à l'option coupe-file."),
 ("Basilique Notre-Dame", "110 Rue Notre Dame O, Montréal, QC H2Y 1T1" , "description"),
 ("Observatoire de la Tour de Montréal", "3200 Rue Viau, Montréal, QC H1V 3J3" , "description"),
 ("Strom Nordic Spa", "1001 Bd de la Forêt, Verdun, QC H3E 1X9" , "description"),
 ("Mont Royal", "Chem. Olmsted, Montréal, QC H3H 1A2" , "description"),
 ("Parc olympique de Montréal", " 4545 Av. Pierre-De Coubertin, Montréal, QC H1V 3N7" , "description"),
-("Oratoire Saint-Joseph du Mont-Royal", "3800 Chem. Queen Mary, Montréal, QC H3V 1H6" , "description");
-
+("Oratoire Saint-Joseph du Mont-Royal", "3800 Chem. Queen Mary, Montréal, QC H3V 1H6" , "description"),
+("ISI Montreal", "362 Rue de la Commune E, Montréal, QC H2Y 0B4" ,"");
 CREATE TABLE if not exists activities (id int(11) NOT NULL AUTO_INCREMENT, wording VARCHAR(50),  site_id INT(11),    price DECIMAL(4,1) , primary key(ID));
 ALTER TABLE activities 
 ADD CONSTRAINT FK_ACTIVITY_SITE FOREIGN KEY(site_id) REFERENCES sites(id);

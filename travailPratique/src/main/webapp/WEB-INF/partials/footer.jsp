@@ -4,13 +4,12 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>JeV<span>isitesMtl</span></h2>
+                    <h2>U<span>Stora</span></h2>
                     <p>Suivez-nous dans les reseaux sociaux!</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com" target="_blank"><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -20,10 +19,14 @@
                     <h2 class="footer-wid-title">User Navigation </h2>
                     <ul>
                         <li><a href="cart">My cart</a></li>
+                            <% if (user != null) {%>
+                        <li><a href="signout">Signout</a></li>
+                            <%} else {%>
+                        <li><a href="signin">Signin</a></li>
                         <li><a href="signup">Signup</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Vendor contact</a></li>
-                        <li><a href="#">Front page</a></li>
+                            <%}%>
+
+
                     </ul>                        
                 </div>
             </div>
@@ -32,24 +35,28 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Categories</h2>
                     <ul>
-                        <li><a href="#">Mobile Phone</a></li>
-                        <li><a href="#">Home accesseries</a></li>
-                        <li><a href="#">LED TV</a></li>
-                        <li><a href="#">Computer</a></li>
-                        <li><a href="#">Gadets</a></li>
+                        <%     if (sites != null) {
+                                for (Site site : sites) {
+                        %>
+                        <li><a href="site?id=<%=site.getId()%>"><%= site.getName()%></a></li>
+                            <%
+                                    }
+                                }
+                            %>
                     </ul>                        
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <h2 class="footer-wid-title">Patners</h2>
                     <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="Type your email">
-                            <input type="submit" value="Subscribe">
-                        </form>
+                        <ul>
+                            <li><a href="https://isbbethesda.com/">Bethesda</a></li>
+                             <li><a href="https://wafrica.online/">With Africa</a></li>
+
+
+                        </ul>    
                     </div>
                 </div>
             </div>

@@ -7,8 +7,10 @@ package com.isi.travailpratique.controller;
 
 import com.isi.travailpratique.entity.Activity;
 import com.isi.travailpratique.entity.Site;
+import com.isi.travailpratique.entity.User;
 import com.isi.travailpratique.manager.ActivityManager;
 import com.isi.travailpratique.manager.SiteManager;
+import com.isi.travailpratique.manager.UserManager;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -23,12 +25,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author isi
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"/index", "/cart", "/site", "/search"})
+@WebServlet(name = "IndexServlet", urlPatterns = {"/index", "/cart", "/site", "/search", "/signin", "/signup", "/signout"})
 public class IndexServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Activity> activities = ActivityManager.findAll();
         List<Site> sites = SiteManager.findAll();
+        request.setAttribute("sites", sites);
         HttpSession userSession;
         HashMap<Integer, Activity> activitiesMap = new HashMap(); // <name, qte>
         for (Activity act : activities) {
@@ -73,7 +76,7 @@ public class IndexServlet extends HttpServlet {
 
                 } else {
                     request.setAttribute("activities", activities);
-                    request.setAttribute("sites", sites);
+                    
                     request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
                 }
@@ -87,7 +90,44 @@ public class IndexServlet extends HttpServlet {
                 request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
                 break;
+            case "/signin":
+                String email = request.getParameter("email");
+                String psw = request.getParameter("password");
+
+                if (UserManager.findOneBy(email, psw) != null) {
+                    userSession = request.getSession(true);
+                    userSession.setAttribute("user", UserManager.findOneBy(email, psw));
+                    request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
+
+                }
+                break;
+            case "/signup":
+                String emailRegis = request.getParameter("email");
+                String pswRegis = request.getParameter("password");
+                String pswCheck = request.getParameter("passwordCheck");
+                if(emailRegis!=null && pswRegis != null && pswRegis.equals(pswCheck) ){
+                if (UserManager.findOneByEmail(emailRegis) == null) {
+                    
+
+                        User user = new User(emailRegis, pswRegis, 0);
+                        if (UserManager.insert(user) != -1) {
+                            request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
+                        }
+                }
+                } else {
+                    //showMessageDialog(null, "passwords don't match");
+                    request.getRequestDispatcher("WEB-INF/registration.jsp").forward(request, response);
+                }
+                break;
+            case "/signout":
+                userSession = request.getSession();
+                userSession.invalidate();
+                response.sendRedirect("index");
+                break;
             default:
+            
                 throw new AssertionError();
         }
     }

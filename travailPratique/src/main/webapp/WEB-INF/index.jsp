@@ -11,7 +11,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     List<Activity> activities = (ArrayList<Activity>) request.getAttribute("activities");
-    List<Site> sites = (ArrayList<Site>) request.getAttribute("sites");
 
 %>
 <!DOCTYPE html>

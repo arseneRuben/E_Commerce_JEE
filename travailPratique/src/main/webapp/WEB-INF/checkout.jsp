@@ -18,6 +18,7 @@
         <%@include file="partials/head.jsp" %>
     </head>
     <body>
+        
       <%@include file="partials/header.jsp" %>
  
         <div class="product-big-title-area">

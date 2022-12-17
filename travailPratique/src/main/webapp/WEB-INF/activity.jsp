@@ -70,7 +70,7 @@
                                             <img src="img/<%= activity.getImages().get(0).getPath() %>" alt="<%= activity.getImages().get(0).getPath() %>">
 
                                             <% } else { %>
-                                            <img src="img/neige.jpeg" alt="faute d'image de bonne taille on fixe cette image de maniere statique">
+                                            <img src="img/grande_roue1.png" alt="faute d'image de bonne taille on fixe cette image de maniere statique">
                                             <% }%>                                            
                                         </div>
 
