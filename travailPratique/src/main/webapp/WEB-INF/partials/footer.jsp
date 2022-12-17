@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>V<span>isitesMtl</span></h2>
+                    <h2>JeV<span>isitesMtl</span></h2>
                     <p>Suivez-nous dans les reseaux sociaux!</p>
                     <div class="footer-social">
                         <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>

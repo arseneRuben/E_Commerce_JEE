@@ -26,9 +26,7 @@
         <div class="header-area">            <%@include file="partials/header.jsp" %>
         </div>
         <%@include file="partials/nav.jsp" %>
-        <div class="slider-area">
-            <%@include file="partials/slider.jsp" %>
-        </div>
+      
 
 
 
@@ -67,9 +65,9 @@
                             %>
                             <div class="thubmnail-recent">
                                 <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                                <h2><a href="index?id=<%= a.getId()%>"><%= a.getWording()%></a></h2>
                                 <div class="product-sidebar-price">
-                                    <ins>$700.00</ins> <del>$800.00</del>
+                                    <ins>$<%= a.getPrice()%></ins> <del>$800.00</del>
                                 </div>             
                             </div>
                             <% }
@@ -88,40 +86,39 @@
                                                 <th class="product-name">Product</th>
                                                 <th class="product-price">Price</th>
                                                 <th class="product-quantity">Quantity</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+
                                             <% if (cart != null) {
-                                                  
-                                                  for(Map.Entry<Integer, Integer> entry : cart.entrySet()) { %>
+
+                                                    for (Map.Entry<Integer, Integer> entry : cart.entrySet()) { %>
                                             <tr class="cart_item">
                                                 <td class="product-remove">
                                                     <a title="Remove this item" class="remove" href="#">×</a> 
                                                 </td>
-
-
-
                                                 <td class="product-name">
+
                                                     <a href="single-product.html">
-                                                        <%= activitiesMap.get(entry.getKey()).getWording() %>
+                                                        <%= activitiesMap.get(entry.getKey()).getWording() %> 
                                                        </a> 
+
                                                 </td>
 
                                                 <td class="product-price">
-                                                    <span class="amount">$<%= activitiesMap.get(entry.getKey()).getPrice() %></span> 
+                                                    <span class="amount">$ <%= activitiesMap.get(entry.getKey()).getPrice() %>  </span> 
                                                 </td>
 
                                                 <td class="product-quantity">
                                                     <div class="quantity buttons_added">
                                                         <input type="button" class="minus" value="-">
-                                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
+                                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="<%= cart.get( activitiesMap.get(entry.getKey()).getId()) %>" min="0" step="1">
                                                         <input type="button" class="plus" value="+">
                                                     </div>
                                                 </td>
 
-                                               
+
                                             </tr>
                                             <% }
                                                 }%>

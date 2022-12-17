@@ -7,10 +7,8 @@ package com.isi.travailpratique.controller;
 
 import com.isi.travailpratique.entity.Activity;
 import com.isi.travailpratique.entity.Site;
-import com.isi.travailpratique.entity.User;
 import com.isi.travailpratique.manager.ActivityManager;
 import com.isi.travailpratique.manager.SiteManager;
-import com.isi.travailpratique.manager.UserManager;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +43,7 @@ public class IndexServlet extends HttpServlet {
                     String pattern = request.getParameter("pattern");
                     if (pattern != null) {
                         activities = ActivityManager.findByName(pattern);
-                       
+                        request.setAttribute("activities", activities);
                     }
                     request.setAttribute("activitiesMap", activitiesMap);
                     request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
@@ -59,8 +57,8 @@ public class IndexServlet extends HttpServlet {
                     Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
                     cart.put(activity.getId(), Integer.parseInt(request.getParameter("quantity")));
                     userSession.setAttribute("cart", cart);
-//                  /  response.sendRedirect("cart");
-                    request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
+                    response.sendRedirect("cart");
+                    //request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 }
 
                 break;
