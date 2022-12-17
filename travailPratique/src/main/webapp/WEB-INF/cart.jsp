@@ -69,7 +69,7 @@
                                 <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                                 <h2><a href="index?id=<%= a.getId()%>"><%= a.getWording()%></a></h2>
                                 <div class="product-sidebar-price">
-                                    <ins>$<%= a.getPrice()%></ins> <del>$800.00</del>
+                                    <ins>$<%= a.getPrice()%></ins> <del><%= a.getPrice() * 5 %></del>
                                 </div>             
                             </div>
                             <% }
@@ -100,7 +100,7 @@
                                             <td class="product-remove">
                                                 <form method="post" action="cart">
                                                     <input type="hidden" name="action" value="delete"/>
-                                                    <input type="hidden" name="activityId" value="<%= activitiesMap.get(entry.getKey()).getId()%>"/>
+                                                    <input type="hidden" name="activity" value="<%= activitiesMap.get(entry.getKey()).getId()%>"/>
                                                     <input type="submit" class="remove btn btn-danger" value="×"/>
                                                 </form>
                                             </td>
@@ -124,7 +124,7 @@
                                                 </div>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="amount">£ <%= activitiesMap.get(entry.getKey()).getPrice() * activitiesMap.get(entry.getKey()).getId()%> </span> 
+                                                <span class="amount">£ <%= activitiesMap.get(entry.getKey()).getPrice() * cart.get(activitiesMap.get(entry.getKey()).getId())%> </span> 
                                             </td>
 
                                         </tr>

@@ -40,7 +40,7 @@ public class IndexServlet extends HttpServlet {
         switch (request.getServletPath()) {
             case "/search":
             case "/cart":
-                 request.setAttribute("activities", activities);
+                request.setAttribute("activities", activities);
                 if (request.getMethod().equals("GET")) {
 
                     String pattern = request.getParameter("pattern");
@@ -52,15 +52,29 @@ public class IndexServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 }
                 if (request.getMethod().equals("POST")) {
-                    userSession = request.getSession(true);
-                    HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) userSession.getAttribute("cart"); // <id, qte>
-                    if (cart == null) {
-                        cart = new HashMap<>();
+                     userSession = request.getSession(true);
+                        HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) userSession.getAttribute("cart"); // <id, qte>
+                    if (request.getParameter("action").equals("new")) {
+
+                       
+                        if (cart == null) {
+                            cart = new HashMap<>();
+                        }
+                        Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
+                        cart.put(activity.getId(), Integer.parseInt(request.getParameter("quantity")));
+                       
+                       
                     }
-                    Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
-                    cart.put(activity.getId(), Integer.parseInt(request.getParameter("quantity")));
-                    userSession.setAttribute("cart", cart);
-                    response.sendRedirect("cart");
+                    if (request.getParameter("action").equals("delete")) {
+
+                        
+                        Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
+                        cart.remove(activity.getId());
+                      
+                       
+                    }
+                     userSession.setAttribute("cart", cart);
+                     response.sendRedirect("cart");
                     //request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 }
 
@@ -76,7 +90,7 @@ public class IndexServlet extends HttpServlet {
 
                 } else {
                     request.setAttribute("activities", activities);
-                    
+
                     request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
                 }
@@ -107,15 +121,14 @@ public class IndexServlet extends HttpServlet {
                 String emailRegis = request.getParameter("email");
                 String pswRegis = request.getParameter("password");
                 String pswCheck = request.getParameter("passwordCheck");
-                if(emailRegis!=null && pswRegis != null && pswRegis.equals(pswCheck) ){
-                if (UserManager.findOneByEmail(emailRegis) == null) {
-                    
+                if (emailRegis != null && pswRegis != null && pswRegis.equals(pswCheck)) {
+                    if (UserManager.findOneByEmail(emailRegis) == null) {
 
                         User user = new User(emailRegis, pswRegis, 0);
                         if (UserManager.insert(user) != -1) {
                             request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
                         }
-                }
+                    }
                 } else {
                     //showMessageDialog(null, "passwords don't match");
                     request.getRequestDispatcher("WEB-INF/registration.jsp").forward(request, response);
@@ -127,7 +140,7 @@ public class IndexServlet extends HttpServlet {
                 response.sendRedirect("index");
                 break;
             default:
-            
+
                 throw new AssertionError();
         }
     }

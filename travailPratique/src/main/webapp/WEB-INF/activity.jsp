@@ -87,6 +87,7 @@
 
                                         <form method="post" action="cart" class="cart">
                                             <div class="quantity">
+                                                 <input type="hidden" name="action" value="new"/>
                                                 <input type="hidden" name="activity" value="<%= activity.getId()%>" />
                                                 <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                             </div>
