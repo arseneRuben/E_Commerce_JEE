@@ -47,19 +47,21 @@ public class CommandLineManger extends Manager {
 
     public static int insert(CommandLine line) {
         int result = -1;
-        String query = "INSERT  INTO  commandLines(id, activity_id, command_id, visitorsNumber)  VALUES  (?, ?, ?,?) ;";
+        String query = "INSERT  INTO  commandLines( activity_id, command_id, visitorsNumber)  VALUES  ( ?, ?,?) ;";
         try {
             Connection connection = Manager.getConnection();
             PreparedStatement ps = Manager.getPreparedStatement(connection, query);
-            ps.setInt(1, line.getId());
-            ps.setInt(2, line.getActivity_id());
-            ps.setInt(3, line.getCommand_id());
-            ps.setInt(4, line.getVisitorsNumber());
+           
+            ps.setInt(1, line.getActivity_id());
+            ps.setInt(2, line.getCommand_id());
+            ps.setInt(3, line.getVisitorsNumber());
             result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys(); // retourne les clÃ©s autogÃ©nÃ©rÃ©es par la base de donnÃ©es
             while (rs.next()) {
                 result = rs.getInt(1);
             }
+           
+          
             Manager.closeConnection(connection);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);

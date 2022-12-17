@@ -48,6 +48,13 @@ public class Command extends Entity {
         this.commnadLines = commnadLines;
     }
     
+      public Command(int client_id, Date createdAt, List<CommandLine> commnadLines) {
+        super(0);
+        this.client_id = client_id;
+        this.createdAt = createdAt;
+        this.commnadLines = commnadLines;
+    }
+    
     
     
 }

@@ -6,13 +6,19 @@
 package com.isi.travailpratique.controller;
 
 import com.isi.travailpratique.entity.Activity;
+import com.isi.travailpratique.entity.Command;
+import com.isi.travailpratique.entity.CommandLine;
 import com.isi.travailpratique.entity.Site;
 import com.isi.travailpratique.entity.User;
 import com.isi.travailpratique.manager.ActivityManager;
+import com.isi.travailpratique.manager.CommandManager;
 import com.isi.travailpratique.manager.SiteManager;
 import com.isi.travailpratique.manager.UserManager;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,29 +58,41 @@ public class IndexServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 }
                 if (request.getMethod().equals("POST")) {
-                     userSession = request.getSession(true);
-                        HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) userSession.getAttribute("cart"); // <id, qte>
+                    userSession = request.getSession(true);
+                    HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) userSession.getAttribute("cart"); // <id, qte>
                     if (request.getParameter("action").equals("new")) {
-
-                       
                         if (cart == null) {
                             cart = new HashMap<>();
                         }
                         Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
                         cart.put(activity.getId(), Integer.parseInt(request.getParameter("quantity")));
-                       
-                       
                     }
                     if (request.getParameter("action").equals("delete")) {
 
-                        
-                        Activity activity = ActivityManager.findById(Integer.parseInt(request.getParameter("activity")));
-                        cart.remove(activity.getId());
-                      
-                       
+                        cart.remove(Integer.parseInt(request.getParameter("activity")));
                     }
-                     userSession.setAttribute("cart", cart);
-                     response.sendRedirect("cart");
+                    if (request.getParameter("action").equals("plus")) {
+
+                        cart.replace(Integer.parseInt(request.getParameter("activity")), cart.get(Integer.parseInt(request.getParameter("activity"))), cart.get(Integer.parseInt(request.getParameter("activity"))) + 1);
+                    }
+                    if (request.getParameter("action").equals("minus")) {
+
+                        cart.replace(Integer.parseInt(request.getParameter("activity")), cart.get(Integer.parseInt(request.getParameter("activity"))), cart.get(Integer.parseInt(request.getParameter("activity"))) - 1);
+                    }
+
+                    if (request.getParameter("action").equals("checkout")) {
+                        User user = (User) userSession.getAttribute("user");
+
+                        Command command = new Command(user.getId(), new Date(), new ArrayList<CommandLine>());
+
+                        for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+                            command.getCommnadLines().add(new CommandLine(0, entry.getKey(), entry.getValue()));
+                        }
+                        CommandManager.insert(command);
+                        cart.clear();
+                    }
+                    userSession.setAttribute("cart", cart);
+                    response.sendRedirect("cart");
                     //request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 }
 
@@ -114,7 +132,6 @@ public class IndexServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("WEB-INF/checkout.jsp").forward(request, response);
-
                 }
                 break;
             case "/signup":
