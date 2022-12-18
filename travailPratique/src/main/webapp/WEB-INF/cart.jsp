@@ -122,7 +122,7 @@
                                                         <form method="post" action="cart">
                                                             <input type="hidden" name="activity" value="<%= activitiesMap.get(entry.getKey()).getId()%>"/>
                                                             <input type="hidden" name="action" value="minus"/>
-                                                            <input type="submit" class="plus" value="-">
+                                                            <input type="submit" class="plus"   value="-">
                                                         </form>
                                                     </div>
                                                 </td>

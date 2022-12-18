@@ -11,10 +11,8 @@
     <head>
         <%@include file="partials/head.jsp" %>
     </head>
-
     <body>
         <%@include file="partials/header.jsp" %>
-
         <div class="single-product-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
@@ -24,7 +22,6 @@
                             <div class="woocommerce">
                                 <div class="woocommerce-info">Becoming a new customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to signup</a>
                                 </div>
-
                                 <form  id="login-form-wrap" action="signup" class="login collapse" method="post">
                                     <p class="form-row form-row-first">
                                         <label for="email">Email <span class="required">*</span>
@@ -36,7 +33,6 @@
                                         </label>
                                         <input type="password" id="password" name="password" class="input-text">
                                     </p><!-- comment -->
-
                                     <p class="form-row form-row-last">
                                         <label for="pws">Password <span class="required">*</span>
                                         </label>
@@ -52,13 +48,7 @@
 
                                     <div class="clear"></div>
 
-
-
-
-
-
-
-                                </form>
+                           </form>
 
                             </div>
 

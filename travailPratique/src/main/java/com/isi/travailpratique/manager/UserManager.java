@@ -149,15 +149,5 @@ public class UserManager extends Manager {
 
         return result;
     }
-    public static void main(String ...args){
-       /* System.out.println(UserManager.findOneBy("ruben@gmail.com","passwordRuben"));
-        User us = (UserManager.findOneBy("ruben@gmail.com","passwordRuben"));
-        us.setEmail("user@gmail.com");
-        int a = UserManager.update(us);
-        System.out.print(a);*/
-       
-//       System.out.println(UserManager.findOneBy("UserManager","passwordRuben"));
-
-}
-
+   
 }

@@ -96,7 +96,8 @@ public class ActivityManager extends Manager {
 
     public static ArrayList<Activity> findByName(String name) {
         ArrayList<Activity> activities = new ArrayList<>();
-        String query = "SELECT * FROM activities  WHERE wording  LIKE  \'% ? %\' ;";
+        name = '%'+name+'%';
+        String query = "SELECT * FROM activities  WHERE wording  LIKE  ?";
         try {
             connexion = DriverManager.getConnection(urlServeur, username, password);
             PreparedStatement ps = connexion.prepareStatement(query);

@@ -76,8 +76,9 @@ public class IndexServlet extends HttpServlet {
                         cart.replace(Integer.parseInt(request.getParameter("activity")), cart.get(Integer.parseInt(request.getParameter("activity"))), cart.get(Integer.parseInt(request.getParameter("activity"))) + 1);
                     }
                     if (request.getParameter("action").equals("minus")) {
-
-                        cart.replace(Integer.parseInt(request.getParameter("activity")), cart.get(Integer.parseInt(request.getParameter("activity"))), cart.get(Integer.parseInt(request.getParameter("activity"))) - 1);
+                        if (cart.get(Integer.parseInt(request.getParameter("activity"))) > 0) {
+                            cart.replace(Integer.parseInt(request.getParameter("activity")), cart.get(Integer.parseInt(request.getParameter("activity"))), cart.get(Integer.parseInt(request.getParameter("activity"))) - 1);
+                        }
                     }
 
                     if (request.getParameter("action").equals("checkout")) {
